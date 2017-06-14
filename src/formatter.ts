@@ -134,7 +134,7 @@ export class Formatter {
             } else if (_pharPath) {
                 // If PHP-CS-Fixer was installed manually, then we will have to provide the full
                 // .phar file path. And optionally include the php path as well.
-                args.unshift(Helper.enquote(_pharPath));
+                args.unshift("-n " + Helper.enquote(_pharPath)); // php -n improves linting performance
                 fixCommand = Helper.enquote(_phpPath) + ' ' + args.join(' ');
             } else {
                 let message: string = 'Neither a pharPath or use of Composer was specified. Aborting...';
